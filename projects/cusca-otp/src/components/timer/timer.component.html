@@ -1,0 +1,9 @@
+<div class="otp-timer" [ngStyle]="{'justify-content': (timerStatus == 'countdown') ? 'space-between' : 'space-around' }">
+  <span class="resend" [ngClass]="timerStatus == 'countdown' ? 'countdown' : 'expired'" (click)="startCounter()">
+    Obtener un nuevo código
+  </span>
+
+  @if (timerStatus == 'countdown') {
+    <span class="timer">0:{{ seconds | number : '2.0' }}</span>
+  }
+</div>

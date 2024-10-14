@@ -1,0 +1,24 @@
+.otp-timer{
+  margin: 24px 0;
+  display: flex;
+
+  .resend{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+
+  .expired{
+    color: #2C85BC;
+    cursor: pointer;
+  }
+
+  .countdown{
+    color: #D9D9D6;
+  }
+
+  .timer{
+    font-size: 14px;
+    line-height: 24px;
+  }
+}

@@ -1,0 +1,21 @@
+<div class="otp-container flex-column">
+  <lib-close-button />
+  <lib-instructions />
+  <lib-inputs />
+  <lib-timer />
+
+
+
+  <div class="buttons-footer flex-column">
+    <button
+      mat-flat-button
+      color="accent"
+    >Continuar</button>
+
+    <button
+      mat-flat-button
+      (click)="goBack()"
+      [mat-dialog-close]="'cancel'"
+    >Regresar</button>
+  </div>
+</div>

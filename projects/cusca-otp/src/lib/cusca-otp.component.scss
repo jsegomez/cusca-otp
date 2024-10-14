@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/Montserrat/static/Montserrat-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+.otp-container{
+  box-sizing: border-box;
+  width: 357px;
+  height: 389px;
+  padding: 16px 24px 24px 24px;
+
+  .buttons-footer{
+    button{
+      height: 50px;
+      width: 100%;
+      font-size: 20px !important;
+      font-weight: 600 !important;
+    }
+
+    button:first-child{
+      margin-bottom: 8px;
+    }
+  }
+}
+
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
