@@ -25,9 +25,9 @@
   }
 }
 
-
-.flex-column{
-  display: flex;
-  flex-direction: column;
+@media(max-width: 480px){
+  .otp-container{
+    width: 100%;
+    padding: 16px 20px;
+  }
 }
-

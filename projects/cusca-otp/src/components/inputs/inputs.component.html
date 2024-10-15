@@ -1,7 +1,10 @@
 <form class="otp-inputs">
   <input
+    #otpInput
     maxlength="1"
     type="text"
     *ngFor="let code of otpCodes; let i = index"
+    (keyup)="moveFocusAndCheckOtpCode($event, i)"
+    (focusout)="isOtpComplete()"
   >
 </form>
