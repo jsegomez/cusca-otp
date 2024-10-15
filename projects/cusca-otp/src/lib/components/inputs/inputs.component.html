@@ -5,6 +5,5 @@
     type="text"
     *ngFor="let code of otpCodes; let i = index"
     (keyup)="moveFocusAndCheckOtpCode($event, i)"
-    (focusout)="isOtpComplete()"
   >
 </form>

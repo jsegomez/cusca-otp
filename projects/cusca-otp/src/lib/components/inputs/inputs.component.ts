@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, inject, input, viewChildren } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AfterViewInit, Component, ElementRef, output, viewChildren } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { DataOtp } from '../../interfaces/data-otp.interface';
 
 @Component({
   selector: 'lib-inputs',
@@ -8,15 +9,16 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angu
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
   ],
   templateUrl: './inputs.component.html',
   styleUrl: './inputs.component.css'
 })
 export class InputsComponent implements AfterViewInit{
-  private listInputs = viewChildren('otpInput');
-  public otpCodes: string[] = ['', '', '', '', '', ''];
   private fullCode: string = '';
+  private listInputs = viewChildren('otpInput');
+
+  public sendDataOtpToParentComponent = output<DataOtp>();
+  public otpCodes: string[] = ['', '', '', '', '', ''];
 
   ngAfterViewInit(): void {
     this.focusOnFirstInput();
@@ -45,19 +47,12 @@ export class InputsComponent implements AfterViewInit{
     const inputs = this.listInputs() as ElementRef[];
     const values = inputs.map(input => input.nativeElement.value);
     this.fullCode = values.join('');
+    this.sendDataOtp();
   }
 
-  isOtpComplete(): void {
-    if(this.fullCode.length === 6) {
-      console.log('OTP completo:', this.fullCode)
-    }else{
-      console.log(this.fullCode)
-    }
+  sendDataOtp(): void {
+    const isValid = this.fullCode.length === 6;
+    if(this.fullCode.length === 6) this.sendDataOtpToParentComponent.emit({isValid, code: this.fullCode});
+    else this.sendDataOtpToParentComponent.emit({isValid, code: this.fullCode});
   }
-
-  submitOtp(): void {
-    // Aquí puedes manejar la lógica para enviar el OTP
-    console.log('OTP enviado:', this.otpCodes.join(''));
-  }
-
 }

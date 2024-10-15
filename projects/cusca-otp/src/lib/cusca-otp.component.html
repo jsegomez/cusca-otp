@@ -1,18 +1,18 @@
 <div class="otp-container flex-column">
   <lib-close-button />
   <lib-instructions />
-  <lib-inputs />
-  <lib-timer />
+  <lib-inputs (sendDataOtpToParentComponent)="getDataOtp($event)"/>
+  <lib-timer (sendStatusToParentComponent)="getDataTimer($event)"/>
 
   <div class="buttons-footer flex-column">
     <button
       mat-flat-button
       color="accent"
+      [disabled]="!(isValidOtp && timerStatus == 'countdown')"
     >Continuar</button>
 
     <button
       mat-flat-button
-      (click)="goBack()"
       [mat-dialog-close]="'cancel'"
     >Regresar</button>
   </div>
